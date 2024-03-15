@@ -26,35 +26,54 @@ const Home: React.FC = () => {
   const isFormValid = username && password;
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-800 relative">
-      <div className="absolute w-full h-1/2 bottom-1/2 bg-blue-600 rounded-b-full z-0"></div>
-      <div className="absolute top-16 md:top-24 z-10">
-        <Image src="/images/intecrobots_dark.png" alt="logo" width="144" height="144" />
+    <div className="flex min-h-screen items-center justify-between bg-gray-800 px-10">
+      {/* Logo y barra divisoria */}
+      <div className="absolute top-10 left-1/2 transform -translate-x-1/2">
+        <Image src="/images/intecrobots_dark.png" alt="logo" width="200" height="200" />
       </div>
-      <div className="relative w-11/12 max-w-sm md:max-w-md bg-gray-700 rounded-lg shadow-lg p-6 mb-4 z-20">
-        <LoginTitle />
-        <form onSubmit={handleLogin}>
-        <LoginInput
-          type="text"
-          id="username"
-          name="username"
-          placeholder="Nombre de usuario..."
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+      <div className="w-1 bg-gray-700 h-3/4 self-center"></div>
+
+      {/* Imagen a la izquierda */}
+      <div className="flex-1 flex justify-center">
+        <Image
+          src="/images/placeholderbot2-removebg-preview.png"
+          alt="Left side image"
+          width={200} // Establece el ancho deseado
+          height={100} // Establece el alto deseado para que coincida con el formulario
         />
-        <LoginInput
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Contraseña..."
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <LoginButton />
-      </form>
-        <SignUpLink />
       </div>
-      <p className="text-xs text-[#7d7d7d] absolute bottom-4 z-20">
+
+      <div className="w-1 bg-white-700 my-12"></div>
+
+      {/* Formulario de inicio de sesión a la derecha */}
+      <div className="flex-1">
+        <div className="w-full max-w-sm mx-auto bg-gray-700 rounded-lg shadow-lg py-10 px-6"> {/* Aumenté el padding vertical aquí */}
+          <LoginTitle />
+          <form onSubmit={handleLogin}>
+            <LoginInput
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Nombre de usuario..."
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <LoginInput
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Contraseña..."
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <LoginButton />
+          </form>
+          <SignUpLink />
+        </div>
+      </div>
+
+      {/* Copi Right */}
+      <p className="text-xs text-gray-400 absolute bottom-4 left-1/2 transform -translate-x-1/2">
         &copy; 2024 Intec Robots.
       </p>
     </div>
