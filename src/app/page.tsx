@@ -8,6 +8,7 @@ import SignUpLink from '../components/login-page/SignUpLink';
 import React, { useState } from 'react';
 import Link from 'next/link';
 
+
 const Home: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
