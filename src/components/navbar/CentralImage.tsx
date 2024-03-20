@@ -4,6 +4,7 @@ import Image from "next/image";
 export const CentralImage = () => {
   return (
     <div className="rounded-full border-2 border-white w-16 h-16 flex items-center justify-center overflow-hidden">
+      <a href="/home">
       <Image
         src="/images/errorRobot.png" 
         alt="Profile"
@@ -11,6 +12,7 @@ export const CentralImage = () => {
         height={64} 
         className="object-cover"
       />
+      </a>
     </div>
   );
 };
