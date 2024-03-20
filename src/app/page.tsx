@@ -6,7 +6,7 @@ import LoginInput from '../components/login-page/LoginInput';
 import LoginButton from '../components/login-page/LoginButton';
 import SignUpLink from '../components/login-page/SignUpLink';
 import React, { useState } from 'react';
-import Link from 'next/link';
+
 
 
 const Home: React.FC = () => {
@@ -24,10 +24,10 @@ const Home: React.FC = () => {
     }
   };
 
-  const isFormValid = username && password;
 
   return (
-    <div className="flex min-h-screen items-center justify-between bg-gray-800 px-10">
+    <div className="flex flex-col min-h-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]">
+    <div className="flex min-h-screen items-center justify-between px-10">
       {/* Logo y barra divisoria */}
       <div className="absolute top-10 left-1/2 transform -translate-x-1/2">
         <Image src="/images/intecrobots_dark.png" alt="logo" width="200" height="200" />
@@ -77,6 +77,7 @@ const Home: React.FC = () => {
       <p className="text-xs text-gray-400 absolute bottom-4 left-1/2 transform -translate-x-1/2">
         &copy; 2024 Intec Robots.
       </p>
+    </div>
     </div>
   );
 };
