@@ -5,7 +5,7 @@ import { GoPeople } from "react-icons/go";
 export const NavigationLinksLeft = () => {
     return (
       <div className="flex items-center space-x-6">
-        <a href="#visitas" className="hover:text-gray-300">
+        <a href="/home/visit" className="hover:text-gray-300">
           <GoPeople size="1.5em"/>
         </a>
         <a href="#salas" className="hover:text-gray-300">
