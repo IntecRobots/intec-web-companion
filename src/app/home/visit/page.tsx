@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Head from 'next/head';
-import Tab from '@/components/visits/tab';
+import Tab from '@/components/visits/Tab';
 import VisitList from '@/components/visits/VisitList';
 
 const visits = [
