@@ -4,7 +4,7 @@ export const Buttons = () => {
   return (
     <>
       <div className="flex justify-center">
-        <button className="bg-white-500 hover:bg-gray-100 text-black border-2 font-bold py-2 px-4 rounded m-5 flex items-center">
+        <button className="bg-white hover:bg-gray-100 text-black border-2 font-bold py-2 px-4 rounded m-5 flex items-center">
           <Image
             src="/images/Google__G__logo.svg.png"
             alt="Profile"
@@ -24,7 +24,6 @@ export const Buttons = () => {
         </a>
       </div>
       <div className="p-4 text-center text-gray-300">© 2024 Intec Robots </div>
-      );
     </>
   );
 };
