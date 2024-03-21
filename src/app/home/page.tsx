@@ -1,18 +1,13 @@
 import React from "react";
 import { FaCalendar, FaRobot, FaVideo, FaCalendarAlt } from "react-icons/fa";
 import SquareButton from "@/components/home/SquareButton";
+import { parseCookies } from "nookies";
 import { getSession } from "../lib";
 
 const Home = async () => {
-  const session = getSession();
+  const session = await getSession();
 
-  if (!session) {
-    // No hay sesión activa, puedes redirigir al login o manejarlo como prefieras
-    console.log("No hay sesión activa");
-  } else {
-    // Hay una sesión activa, accede a `session.token` y `session.userId`
-    console.log("Sesión activa:", session);
-  }
+  console.log(session.sessionId);
 
   return (
     <div className="min-h-screen text-white flex flex-col items-center py-10 mt-7">
