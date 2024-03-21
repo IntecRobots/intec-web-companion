@@ -22,6 +22,7 @@ const useVisits = (url: string) => {
 
       if (!response.ok) {
         setError(`Network response was not ok: ${response.statusText}`);
+
       } else {
         const data = await response.json();
         setVisits(data);
@@ -35,8 +36,8 @@ const useVisits = (url: string) => {
   };
 
   useEffect(() => {
-    fetchVisits();
-  }, [url, session]);
+    fetchVisits() 
+  }, [url,session]);
 
   return { visits, isLoading, error };
 };
