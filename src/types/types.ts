@@ -5,3 +5,7 @@ export type Visit = {
     startTime: string;
     room: string;
   };
+
+export type Room = {
+    
+}
