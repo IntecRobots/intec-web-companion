@@ -1,6 +1,20 @@
+"use client"
+
 import Image from "next/image";
+import { logout } from '@/app/lib';
 
 export const Buttons = () => {
+
+  const handleLogout = async () => {
+    try {
+      await logout(); // Usa la función de logout desde lib/auth.ts
+      // Redirecciona al usuario al login
+      window.location.href = '/';
+    } catch (error) {
+      console.error('Error al cerrar sesión', error);
+    }
+  };
+
   return (
     <>
       <div className="flex justify-center">
@@ -16,15 +30,15 @@ export const Buttons = () => {
         </button>
       </div>
       <div className="flex justify-center">
-        <a
-          href="/"
+        <button
+          onClick={handleLogout}
           className="bg-red-500 hover:bg-red-700 text-white font-bold py-4 px-14 rounded m-5"
         >
           Cerrar sesión
-        </a>
+        </button>
       </div>
       <div className="p-4 text-center text-gray-300">© 2024 Intec Robots </div>
-      );
+      
     </>
   );
 };
