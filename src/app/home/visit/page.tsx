@@ -10,7 +10,7 @@ import useVisits from '@/hooks/useVisits';
 
 export default function Visit() {
     const [activeTab, setActiveTab] = useState('upcoming');
-    const {visits,isLoading,error} = useVisits("");
+    const {visits,isLoading,error} = useVisits("https://demo.intecrobots.com/api/visitas");
 
 
 
@@ -33,9 +33,8 @@ export default function Visit() {
       );
     }
 
-    console.log(visits)
     return (
-      <div className='bg-black min-h-screen'>
+      <div className='min-h-screen'>
         <Head>
           <title>Visitas</title>
         </Head>

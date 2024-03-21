@@ -10,7 +10,7 @@ const VisitList: React.FC<VisitListProps> = ({ visits }) => {
 
 
   return (
-    <div> 
+    <div  > 
       {visits.map((visit:any,index:number) => (
         <VisitItem
           key={index}
