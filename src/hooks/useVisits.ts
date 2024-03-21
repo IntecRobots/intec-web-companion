@@ -22,11 +22,11 @@ const useVisits = (url: string) => {
       });
 
       if (!response.ok) {
-        throw new Error(`Network response was not ok: ${response.statusText}`);
+        setError(`Network response was not ok: ${response.statusText}`);
+      }else{
+        const data = await response.json();
+        setVisits(data);
       }
-
-      const data = await response.json();
-      setVisits(data);
     } catch (err) {
       console.error("Error fetching visits:", err);
       setError(err);
