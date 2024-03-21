@@ -2,24 +2,44 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import RoomItem from '@/components/rooms/RoomItem'; // Asegúrate de que la ruta es correcta
+import useRooms from '@/hooks/useRooms';
 
-const roomData = [
-  { name: 'Sala Prueba', description: 'prueba', enabled: true },
-  { name: 'Sala Google', description: 'google', enabled: false },
-  { name: 'Sala Meta', description: 'meta', enabled: false },
-  // Agregar más salas según sea necesario
-];
 
 const Home: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const {rooms,isLoading,error} = useRooms("https://demo.intecrobots.com/api/salas");
+
+
+  console.log(rooms,error)
+
+
+  if(error){
+    return (
+      <div>
+        Error
+        
+      </div>
+    );
+  }
+
+  if(isLoading){
+    return (
+      <div className='text-white'>
+        <h1>Cargando</h1>
+      </div>
+    );
+  }
+
+
 
   const filteredRooms = searchTerm
-    ? roomData.filter(room =>
-        room.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        room.description.toLowerCase().includes(searchTerm.toLowerCase())
+    ? rooms.records.filter((room:any) =>
+        room.sala.toLowerCase().includes(searchTerm.toLowerCase())
       )
-    : roomData;
+    : rooms.records;
 
+
+  rooms.records.map((ele:any) => console.log(ele));
   return (
     <>
       <Head>
@@ -36,12 +56,13 @@ const Home: React.FC = () => {
           />
         </div>
         <div className="mx-auto max-w-6xl space-y-4">
-          {filteredRooms.map((room, index) => (
+          {filteredRooms.map((room:any, index:number) => (
             <RoomItem
               key={index}
-              name={room.name}
-              description={room.description}
-              initialState={room.enabled}
+              id={room.id}
+              sala={room.name}
+              puntomapa={room.puntomapa}
+              initialState={room.estado}
             />
           ))}
         </div>
