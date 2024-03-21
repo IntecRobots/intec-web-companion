@@ -1,5 +1,3 @@
-"use client"
-
 import React from "react";
 import { Buttons } from "@/components/settings/Buttons";
 import { CheckBoxes } from "@/components/settings/CheckBoxes";

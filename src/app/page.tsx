@@ -1,14 +1,12 @@
-"use client"
-
-
-import Image from 'next/image';
-import LoginTitle from '../components/login-page/LoginTitle';
-import LoginInput from '../components/login-page/LoginInput';
-import LoginButton from '../components/login-page/LoginButton';
-import SignUpLink from '../components/login-page/SignUpLink';
-import React, { useState } from 'react';
-import { login } from '../app/lib';
-import { cookies } from 'next/headers'
+import Image from "next/image";
+import LoginTitle from "../components/login-page/LoginTitle";
+import LoginInput from "../components/login-page/LoginInput";
+import LoginButton from "../components/login-page/LoginButton";
+import SignUpLink from "../components/login-page/SignUpLink";
+import React, { useState } from "react";
+import { login } from "../app/lib";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 const Home: React.FC = () => {
   const [username, setUsername] = useState("");
@@ -18,16 +16,16 @@ const Home: React.FC = () => {
     e.preventDefault();
     if (username && password) {
       try {
-        console.log('Enviando al backend:', { username, password }); // Agrega esta línea
+        console.log("Enviando al backend:", { username, password }); // Agrega esta línea
         // Utiliza la función de login desde lib/auth.ts
-        await login(username, password);
+        // await login({ username, password });
         // Redirige al usuario a la página de inicio
-        window.location.href = '/home';
+        window.location.href = "/home";
       } catch (error) {
-        console.error('Error en inicio de sesión', error);
+        console.error("Error en inicio de sesión", error);
       }
     } else {
-      console.error('Por favor, rellene todos los campos.');
+      console.error("Por favor, rellene todos los campos.");
     }
   };
 
@@ -63,22 +61,28 @@ const Home: React.FC = () => {
             {" "}
             {/* Aumenté el padding vertical aquí */}
             <LoginTitle />
-            <form onSubmit={handleLogin}>
+            <form
+              action={async (formData) => {
+                "use server";
+                await login(formData);
+                redirect("/home");
+              }}
+            >
               <LoginInput
                 type="text"
                 id="username"
                 name="username"
                 placeholder="Nombre de usuario..."
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                //value={username}
+                //onChange={(e) => setUsername(e.target.value)}
               />
               <LoginInput
                 type="password"
                 id="password"
                 name="password"
                 placeholder="Contraseña..."
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                // value={password}
+                // onChange={(e) => setPassword(e.target.value)}
               />
               <LoginButton />
             </form>

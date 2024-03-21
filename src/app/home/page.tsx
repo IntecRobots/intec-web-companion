@@ -5,7 +5,7 @@ import { parseCookies } from "nookies";
 import { getSession } from "../lib";
 
 const Home = async () => {
-  const session = getSession();
+  const session = await getSession();
 
   if (!session) {
     // No hay sesión activa, puedes redirigir al login o manejarlo como prefieras
