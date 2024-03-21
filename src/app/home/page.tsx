@@ -1,13 +1,19 @@
 import React from "react";
 import { FaCalendar, FaRobot, FaVideo, FaCalendarAlt } from "react-icons/fa";
 import SquareButton from "@/components/home/SquareButton";
-import { getSession } from "../../context/lib";
+import { parseCookies } from "nookies";
+import { getSession } from "../lib";
 
 const Home = async () => {
-  const session = await getSession();
+  const session = getSession();
 
-  console.log(session.sessionId);
-  
+  if (!session) {
+    // No hay sesión activa, puedes redirigir al login o manejarlo como prefieras
+    console.log("No hay sesión activa");
+  } else {
+    // Hay una sesión activa, accede a `session.token` y `session.userId`
+    console.log("Sesión activa:", session);
+  }
 
   return (
     <div className="min-h-screen text-white flex flex-col items-center py-10 mt-7">
@@ -16,10 +22,10 @@ const Home = async () => {
           <div className="flex-1 pr-10">
             <h1 className="text-4xl font-bold mb-3">Bienvenido, </h1>
             <h4 className="text-2lg mb-1">Próximos Eventos</h4>
-            <div className="bg-gray-800 h-96 bg-opacity-85 rounded-2xl shadow-lg p-6 border-2 border-gray-700">
-            </div>
+            <div className="bg-gray-800 h-96 bg-opacity-85 rounded-2xl shadow-lg p-6 border-2 border-gray-700"></div>
           </div>
 
+          {/* Right Side */}
           <div className="flex-1 pl-2 mt-20">
             <div className="grid grid-cols-2 gap-4">
               <SquareButton icon={FaCalendar} label="Añadir evento" />
