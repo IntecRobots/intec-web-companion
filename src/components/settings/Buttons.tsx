@@ -1,19 +1,17 @@
-"use client"
-
 import Image from "next/image";
-import { logout } from '@/app/lib';
+import { logout } from "@/app/lib";
+import { redirect } from "next/navigation";
 
 export const Buttons = () => {
-
-  const handleLogout = async () => {
+  /* const handleLogout = async () => {
     try {
-      await logout(); // Usa la función de logout desde lib/auth.ts
+      logout(); // Usa la función de logout desde lib/auth.ts
       // Redirecciona al usuario al login
       window.location.href = '/';
     } catch (error) {
       console.error('Error al cerrar sesión', error);
     }
-  };
+  }; */
 
   return (
     <>
@@ -30,15 +28,17 @@ export const Buttons = () => {
         </button>
       </div>
       <div className="flex justify-center">
-        <button
-          onClick={handleLogout}
-          className="bg-red-500 hover:bg-red-700 text-white font-bold py-4 px-14 rounded m-5"
+        <form
+          className="bg-white"
+          action={async () => {
+            "use server";
+            await logout();
+          }}
         >
-          Cerrar sesión
-        </button>
+          <button type="submit">Logout</button>
+        </form>
       </div>
       <div className="p-4 text-center text-gray-300">© 2024 Intec Robots </div>
-      
     </>
   );
 };
