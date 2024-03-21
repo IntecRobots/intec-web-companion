@@ -10,15 +10,17 @@ import useVisits from '@/hooks/useVisits';
 
 export default function Visit() {
     const [activeTab, setActiveTab] = useState('upcoming');
-    const {visits,isLoading,error,refetch} = useVisits("");
+    const {visits,isLoading,error} = useVisits("htt://demo.intecrobots.com/api/visitas");
 
 
+    
 
     if(error){
+
       return(
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative w-96" role="alert">
             <strong className="font-bold">¡Error!</strong>
-            <span className="block sm:inline">{error}</span>
+            <span className="block sm:inline">NO se a podido ver visitas</span>
             <span className="absolute top-0 bottom-0 right-0 px-4 py-3">              
           </span>
         </div>
@@ -28,14 +30,13 @@ export default function Visit() {
     if(isLoading){
       return(
         <div>
-          <h1>Cargando</h1>
+          <h1 className='text-white'>Cargando</h1>
         </div>
       );
     }
 
-    console.log(visits)
     return (
-      <div className='bg-black min-h-screen'>
+      <div className='min-h-screen'>
         <Head>
           <title>Visitas</title>
         </Head>

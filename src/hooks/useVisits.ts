@@ -6,15 +6,13 @@ const useVisits = (url: string) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<any>(null);
   const session = ""
-  
 
-  const refetch = useCallback(async () => {
-    // console.log("Starting to refetch visits");
+
+  const fetchVisits = async () => {
     setIsLoading(true);
     setError(null);
 
     try {
-      // console.log("Sending fetch request");
       const response = await fetch(url, {
         method: "GET",
         headers: {
@@ -23,29 +21,25 @@ const useVisits = (url: string) => {
         },
       });
 
-      // console.log("Fetch request sent, processing response");
       if (!response.ok) {
-        throw new Error(`Network response was not ok: ${response.statusText}`);
+        setError(`Network response was not ok: ${response.statusText}`);
+      }else{
+        const data = await response.json();
+        setVisits(data);
       }
-
-      const data = await response.json();
-      // console.log("Fetch successful, data received:", data);
-      setVisits(data);
     } catch (err) {
       console.error("Error fetching visits:", err);
       setError(err);
     } finally {
-      // console.log("Refetch completed");
       setIsLoading(false);
     }
-  }, [url, session]);
+  };
 
   useEffect(() => {
-    console.log("useEffect triggered, refetching visits");
-    refetch();
-  }, [refetch]);
+    fetchVisits() 
+  }, [url,session]);
 
-  return { visits, isLoading, error, refetch };
+  return { visits, isLoading, error };
 };
 
 export default useVisits;
