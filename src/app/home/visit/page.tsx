@@ -10,7 +10,7 @@ import useVisits from '@/hooks/useVisits';
 
 export default function Visit() {
     const [activeTab, setActiveTab] = useState('upcoming');
-    const {visits,isLoading,error,refetch} = useVisits("");
+    const {visits,isLoading,error} = useVisits("");
 
 
 
