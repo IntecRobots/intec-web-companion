@@ -1,29 +1,38 @@
-import { Visit } from '@/types/types';
-import React from 'react';
-import VisitItem from './VisitItem';
+// VisitList.tsx
+
+import { Visit } from "@/types/types";
+import React from "react";
+import VisitItem from "./VisitItem";
 
 interface VisitListProps {
   visits: Visit[];
+  upcomingOnly?: boolean;
 }
 
-const VisitList: React.FC<VisitListProps> = ({ visits }) => {
-
+const VisitList: React.FC<VisitListProps> = ({
+  upcomingOnly = false,
+  visits,
+}) => {
+  const filteredVisits = upcomingOnly
+    ? visits.filter((visit) => new Date(visit.startDate) > new Date())
+    : visits;
 
   return (
-    <div  className="bg-black"> 
-      {visits.map((visit:any,index:number) => (
-        <VisitItem
-          key={index}
-          visit={visit}
-          index={index}
-        />
-      ))}
+    <div className="bg-black">
+      {filteredVisits.length === 0 ? ( // Verificar si la lista de visitas filtradas está vacía
+        <div className="text-white text-2xl font-bold text-center py-8">
+          No hay visitas próximas
+        </div>
+      ) : (
+        filteredVisits.map((visit: any, index: number) => (
+          <VisitItem key={index} visit={visit} index={index} />
+        ))
+      )}
     </div>
   );
 };
 
-
-
+export default VisitList;
 
 /*
 <div key={index}  className="bg-gray-800 rounded-xl shadow-lg overflow-hidden my-4 mx-auto max-w-4xl"> }
@@ -40,7 +49,4 @@ const VisitList: React.FC<VisitListProps> = ({ visits }) => {
 </div>
 )
 
-*/ 
-
-
-export default VisitList;
+*/
