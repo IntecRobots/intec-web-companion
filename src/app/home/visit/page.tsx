@@ -35,6 +35,9 @@ export default function Visit() {
 
   return (
     <div className="bg-black min-h-screen">
+      <Head>
+        <title>Visitas</title>
+      </Head>
       <div className="container mx-auto px-4">
         <header className="border-b border-gray-200">
           <nav className="flex">
