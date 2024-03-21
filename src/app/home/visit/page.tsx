@@ -4,18 +4,36 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import Tab from '@/components/visits/Tab';
 import VisitList from '@/components/visits/VisitList';
+import useVisits from '@/hooks/useVisits';
 
-const visits = [
-  { id: 1, name: 'Visita Intec Robots', date: '2024-02-16 - 15:40:00', location: 'Sala Meta' },
-  { id: 2, name: 'Visita Clínica Veterinaria', date: '2024-02-18 - 10:30:00', location: 'Sala Google' },
-  { id: 3, name: 'Adolfo El de la Moto', date: '2024-03-05 - 13:00:00', location: 'Sala Google' },
-  { id: 4, name: 'Prueba 4', date: '2024-03-10 - 13:20:00', location: 'Sala Meta' },
-  // ...otros datos
-];
+
 
 export default function Visit() {
     const [activeTab, setActiveTab] = useState('upcoming');
-  
+    const {visits,isLoading,error,refetch} = useVisits("");
+
+
+
+    if(error){
+      return(
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative w-96" role="alert">
+            <strong className="font-bold">¡Error!</strong>
+            <span className="block sm:inline">{error}</span>
+            <span className="absolute top-0 bottom-0 right-0 px-4 py-3">              
+          </span>
+        </div>
+      );
+    }
+
+    if(isLoading){
+      return(
+        <div>
+          <h1>Cargando</h1>
+        </div>
+      );
+    }
+
+    console.log(visits)
     return (
       <div className='bg-black min-h-screen'>
         <Head>
@@ -37,7 +55,7 @@ export default function Visit() {
             </nav>
           </header>
           <main>
-            <VisitList visits={visits} />
+            <VisitList visits={visits.records} />
           </main>
         </div>
       </div>
