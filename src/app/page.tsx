@@ -1,11 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import LoginTitle from "../components/login-page/LoginTitle";
 import LoginInput from "../components/login-page/LoginInput";
 import LoginButton from "../components/login-page/LoginButton";
 import SignUpLink from "../components/login-page/SignUpLink";
 import React, { useState } from "react";
-import { login } from "../context/lib";
-import { redirect } from "next/navigation";
 
 const Home: React.FC = () => {
   const [username, setUsername] = useState("");
@@ -31,6 +31,7 @@ const Home: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]">
       <div className="flex min-h-screen items-center justify-between px-10">
+        {/* Logo y barra divisoria */}
         <div className="absolute top-10 left-1/2 transform -translate-x-1/2">
           <Image
             src="/images/intecrobots_dark.png"
@@ -41,38 +42,40 @@ const Home: React.FC = () => {
         </div>
         <div className="w-1 bg-gray-700 h-3/4 self-center"></div>
 
+        {/* Imagen a la izquierda */}
         <div className="flex-1 flex justify-center">
           <Image
             src="/images/placeholderbot2-removebg-preview.png"
             alt="Left side image"
-            width={200}
-            height={100}
+            width={200} // Establece el ancho deseado
+            height={100} // Establece el alto deseado para que coincida con el formulario
           />
         </div>
 
         <div className="w-1 bg-white-700 my-12"></div>
 
+        {/* Formulario de inicio de sesión a la derecha */}
         <div className="flex-1">
           <div className="w-full max-w-sm mx-auto bg-gray-700 rounded-lg shadow-lg py-10 px-6">
+            {" "}
+            {/* Aumenté el padding vertical aquí */}
             <LoginTitle />
-            <form
-              action={async (formData) => {
-                "use server";
-                await login(formData);
-                redirect("/home");
-              }}
-            >
+            <form onSubmit={handleLogin}>
               <LoginInput
                 type="text"
                 id="username"
                 name="username"
                 placeholder="Nombre de usuario..."
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
               />
               <LoginInput
                 type="password"
                 id="password"
                 name="password"
                 placeholder="Contraseña..."
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <LoginButton />
             </form>
@@ -80,6 +83,7 @@ const Home: React.FC = () => {
           </div>
         </div>
 
+        {/* Copi Right */}
         <p className="text-xs text-gray-400 absolute bottom-4 left-1/2 transform -translate-x-1/2">
           &copy; 2024 Intec Robots.
         </p>
