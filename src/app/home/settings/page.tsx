@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import { Buttons } from "@/components/settings/Buttons";
 import { CheckBoxes } from "@/components/settings/CheckBoxes";
 import { OptionsButtons } from "@/components/settings/OptionsButtons";
