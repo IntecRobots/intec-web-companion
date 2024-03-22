@@ -3,15 +3,6 @@ import { logout } from "@/app/lib";
 import { redirect } from "next/navigation";
 
 export const Buttons = () => {
-  /* const handleLogout = async () => {
-    try {
-      logout(); // Usa la función de logout desde lib/auth.ts
-      // Redirecciona al usuario al login
-      window.location.href = '/';
-    } catch (error) {
-      console.error('Error al cerrar sesión', error);
-    }
-  }; */
 
   return (
     <>
