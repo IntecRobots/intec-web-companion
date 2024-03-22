@@ -1,7 +1,6 @@
 import React from "react";
 import { FaCalendar, FaRobot, FaVideo, FaCalendarAlt } from "react-icons/fa";
 import SquareButton from "@/components/home/SquareButton";
-import { parseCookies } from "nookies";
 import { getSession } from "../lib";
 
 const Home = async () => {
@@ -25,7 +24,6 @@ const Home = async () => {
             <div className="bg-gray-800 h-96 bg-opacity-85 rounded-2xl shadow-lg p-6 border-2 border-gray-700"></div>
           </div>
 
-          {/* Right Side */}
           <div className="flex-1 pl-2 mt-20">
             <div className="grid grid-cols-2 gap-4">
               <SquareButton icon={FaCalendar} label="Añadir evento" />
