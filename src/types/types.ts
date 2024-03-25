@@ -5,3 +5,4 @@ export type Visit = {
     startTime: string;
     room: string;
   };
+
