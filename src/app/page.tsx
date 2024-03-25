@@ -4,7 +4,7 @@ import LoginInput from "../components/login-page/LoginInput";
 import LoginButton from "../components/login-page/LoginButton";
 import SignUpLink from "../components/login-page/SignUpLink";
 import React, { useState } from "react";
-import { login } from "../app/lib";
+import { login } from "../context/lib";
 import { redirect } from "next/navigation";
 
 const Home: React.FC = () => {

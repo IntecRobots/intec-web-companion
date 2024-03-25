@@ -1,7 +1,7 @@
 import React from "react";
 import { FaCalendar, FaRobot, FaVideo, FaCalendarAlt } from "react-icons/fa";
 import SquareButton from "@/components/home/SquareButton";
-import { getSession } from "../lib";
+import { getSession } from "../../context/lib";
 
 const Home = async () => {
   const session = await getSession();
