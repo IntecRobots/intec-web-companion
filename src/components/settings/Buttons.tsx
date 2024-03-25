@@ -1,6 +1,9 @@
 import Image from "next/image";
+import { logout } from "@/app/lib";
+import { redirect } from "next/navigation";
 
 export const Buttons = () => {
+
   return (
     <>
       <div className="flex justify-center">
@@ -16,15 +19,17 @@ export const Buttons = () => {
         </button>
       </div>
       <div className="flex justify-center">
-        <a
-          href="/"
-          className="bg-red-500 hover:bg-red-700 text-white font-bold py-4 px-14 rounded m-5"
+        <form
+          className="bg-white"
+          action={async () => {
+            "use server";
+            await logout();
+          }}
         >
-          Cerrar sesión
-        </a>
+          <button type="submit">Logout</button>
+        </form>
       </div>
       <div className="p-4 text-center text-gray-300">© 2024 Intec Robots </div>
-      );
     </>
   );
 };
