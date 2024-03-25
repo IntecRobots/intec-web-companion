@@ -1,6 +1,6 @@
 "use client";
 
-import { useRoomUpdate } from '@/hooks/useRoomUpdate';
+import  useRoomUpdate  from '@/hooks/useRoomUpdate';
 import React, { useState } from 'react';
 
 interface RoomItemProps {
@@ -8,20 +8,22 @@ interface RoomItemProps {
   sala: string;
   puntomapa: string;
   initialState: boolean;
+  token:any;
 }
 
-const RoomItem: React.FC<RoomItemProps> = ({ id,sala, puntomapa, initialState}) => {
+const RoomItem: React.FC<RoomItemProps> = ({ id,sala, puntomapa, initialState,token}) => {
   const [enabled, setEnabled] = useState(initialState);
 
   const  {isUpdating,updateRoomState} = useRoomUpdate();
 
   const toggleRoomState = async () => {
+
     if (isUpdating || !id) return;
 
     const newIsEnabled = !enabled;
     setEnabled(newIsEnabled);
    
-    await updateRoomState(id, newIsEnabled);
+    await updateRoomState(id, newIsEnabled,token);
   };
 
 

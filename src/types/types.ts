@@ -6,6 +6,3 @@ export type Visit = {
     room: string;
   };
 
-export type Room = {
-    
-}
