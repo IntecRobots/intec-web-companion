@@ -1,6 +1,5 @@
 import Image from "next/image";
-import { logout } from "@/app/lib";
-import { redirect } from "next/navigation";
+import { logout } from "@/context/lib";
 
 export const Buttons = () => {
 

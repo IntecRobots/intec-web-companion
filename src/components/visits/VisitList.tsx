@@ -1,13 +1,17 @@
 import { Visit } from '@/types/types';
 import React from 'react';
 import VisitItem from './VisitItem';
+import { getSession } from '@/context/lib';
 
 interface VisitListProps {
   visits: Visit[];
 }
 
-const VisitList: React.FC<VisitListProps> = ({ visits }) => {
+const VisitList: React.FC<VisitListProps> = async ({ visits }) => {
 
+const session = await getSession()
+
+console.log(session);
 
   return (
     <div  > 
