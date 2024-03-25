@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { logout } from "@/app/lib";
+import { logout } from "@/context/lib";
+import { redirect } from "next/navigation";
 
 export const Buttons = () => {
   const handleLogout = async () => {

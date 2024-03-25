@@ -1,5 +1,3 @@
-// VisitList.tsx
-
 import { Visit } from "@/types/types";
 import React from "react";
 import VisitItem from "./VisitItem";
