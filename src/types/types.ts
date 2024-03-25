@@ -1,7 +1,7 @@
 export type Visit = {
-    title: string;
-    description: string;
-    startDate: string;
-    startTime: string;
-    room: string;
-  };
+  title: string;
+  description: string;
+  startDate: string;
+  startTime: string;
+  room: string;
+};
