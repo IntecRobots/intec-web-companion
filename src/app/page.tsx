@@ -1,10 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import LoginTitle from "../components/login-page/LoginTitle";
 import LoginInput from "../components/login-page/LoginInput";
 import LoginButton from "../components/login-page/LoginButton";
 import SignUpLink from "../components/login-page/SignUpLink";
 import React, { useState } from "react";
-import { login } from "../app/lib";
+import { login } from "@/context/lib";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 

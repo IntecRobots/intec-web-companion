@@ -23,7 +23,7 @@ export const login = async (formData: FormData) => {
     }
 
     const { token, user_id } = await response.json();
-    
+
     // console.log("Inicio de sesión exitoso", token, user_id);
 
     cookies().set("token", token);
@@ -43,6 +43,6 @@ export const logout = async () => {
 export async function getSession() {
   const sessionToken = cookies().get("token")?.value;
   const sessionId = cookies().get("userId")?.value;
-  
-  return {sessionToken,sessionId};
+
+  return { sessionToken, sessionId };
 }
