@@ -8,7 +8,7 @@ export const NavigationLinksLeft = () => {
         <a href="/home/visit" className="hover:text-gray-300">
           <GoPeople size="1.5em"/>
         </a>
-        <a href="#salas" className="hover:text-gray-300">
+        <a href="/home/room" className="hover:text-gray-300">
           <BsCup size="1.5em"/>
         </a>
       </div>
