@@ -3,8 +3,6 @@ import Head from 'next/head';
 import VisitList from '@/components/visits/VisitList';
 import getVisitas from '@/actions/getVisitas';
 
-
-
 export default async function Visit() {
 
     const data = await getVisitas();

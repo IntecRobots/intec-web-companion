@@ -1,16 +1,14 @@
 import Image from "next/image";
 import LoginTitle from "../components/login-page/LoginTitle";
-import LoginInput from "../components/login-page/LoginInput";
-import LoginButton from "../components/login-page/LoginButton";
 import SignUpLink from "../components/login-page/SignUpLink";
 import React, { useState } from "react";
-import { login } from "../context/lib";
-import { redirect } from "next/navigation";
+import FormLogin from "@/components/login-page/FormLogin";
 
 const Home: React.FC = () => {
   
 
   return (
+     
     <div className="flex flex-col min-h-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]">
       <div className="flex min-h-screen items-center justify-between px-10">
         
@@ -39,27 +37,8 @@ const Home: React.FC = () => {
         <div className="flex-1">
           <div className="w-full max-w-sm mx-auto bg-gray-700 rounded-lg shadow-lg py-10 px-6">
             <LoginTitle />
-            <form
-              action={async (formData) => {
-                "use server";
-                await login(formData);
-                redirect("/home");
-              }}
-            >
-              <LoginInput
-                type="text"
-                id="username"
-                name="username"
-                placeholder="Nombre de usuario..."
-              />
-              <LoginInput
-                type="password"
-                id="password"
-                name="password"
-                placeholder="Contraseña..."
-              />
-              <LoginButton />
-            </form>
+            <FormLogin/>
+            
             <SignUpLink />
           </div>
         </div>
