@@ -9,10 +9,6 @@ interface VisitListProps {
 
 const VisitList: React.FC<VisitListProps> = async ({ visits }) => {
 
-const session = await getSession()
-
-console.log(session);
-
   return (
     <div  > 
       {visits.map((visit:any,index:number) => (
