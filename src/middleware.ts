@@ -8,7 +8,6 @@ export function middleware(request: NextRequest) {
   const token = tokenCookie ? tokenCookie.value : "";
   const userId = userIdCookie ? userIdCookie.value : "";
 
-  // Verifica que el token y userId no sean strings vacíos
   const isValidToken = token !== "";
   const isValidUserId = userId !== "";
 
