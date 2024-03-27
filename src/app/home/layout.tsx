@@ -18,6 +18,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <hr className="border-b border-gray-700 mb-5"/>
       </header>
       <main className="flex-grow">
+        
         {children}
       </main>
     </div>
