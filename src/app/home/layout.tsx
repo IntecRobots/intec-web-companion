@@ -3,6 +3,7 @@ import { CentralImage } from "@/components/navbar/CentralImage";
 import { NavigationLinksRight } from "@/components/navbar/NavigationLinksRight";
 import { SearchBar } from "@/components/navbar/SearchBar";
 import { LogoImage } from "@/components/navbar/LogoImage";
+import LogoutSession from "@/components/login-page/LogoutSession";
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
@@ -14,7 +15,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <CentralImage />
           <NavigationLinksRight />
         </div>
-        <SearchBar />
+
+       
+        <LogoutSession/>
         <hr className="border-b border-gray-700 mb-5"/>
       </header>
       <main className="flex-grow">

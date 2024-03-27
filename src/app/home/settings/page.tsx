@@ -13,10 +13,8 @@ const Settings: React.FC = () => {
       <h3 className="p-4 m-4 font-bold text-xl">MENÚ DE OPCIONES</h3>
       <OptionsButtons />
       <CheckBoxes />
-   
-        <Buttons />
-        
-      <LogoutSession/>
+      <Buttons />
+      <div className="p-4 text-center text-gray-300">© 2024 Intec Robots </div>
     </div>
   );
 };
