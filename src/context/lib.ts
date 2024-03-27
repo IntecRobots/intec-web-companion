@@ -7,32 +7,33 @@ export const login = async (formData: FormData) => {
     password: formData.get("password"),
   };
   try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
-      }
-    );
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
 
     if (!response.ok) {
-      throw new Error("Error de autenticación");
+      console.error("Error en el usuario o contraseña");
+      return; // Previene que el código siga adelante si hay un error
     }
 
     const { token, user_id } = await response.json();
-    
-    // console.log("Inicio de sesión exitoso", token, user_id);
-
     cookies().set("token", token);
     cookies().set("userId", user_id);
-  } catch (error) {
-    console.error("Error en inicio de sesión", error);
-    throw error;
+    
+    // Solo redirige si todo ha ido bien
+    redirect("/home");
+
+  } catch (networkError) {
+    console.error("Error de red o servidor", networkError);
+    // No llames a redirect aquí, maneja el error de red como necesites
   }
 };
+
+
 
 export const logout = async () => {
   cookies().delete("userId");
